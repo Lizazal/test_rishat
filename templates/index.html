@@ -1,0 +1,27 @@
+{% extends 'sample.html' %}
+{% block content %}
+    <table style="text-align: center; font-size: large; margin-top: 5%; width: 100%; table-layout: fixed;">
+    <tr style="height:40px">
+        <th>Item</th>
+        <th>Price</th>
+        <th>Description</th>
+        <th>To purchase</th>
+    </tr>
+    {% for item in my_items_list %}
+        <tr style="height:40px">
+            <th>
+                {{ item.name }}
+            </th>
+            <th>
+                {{ item.get_display_price }} $
+            </th>
+            <th>
+                {{ item.description }}
+            </th>
+            <th>
+                <a href="{% url 'item' item_id=item.id %}">Purchase page</a>
+            </th>
+        </tr>
+    {% endfor %}
+    </table>
+{% endblock content %}
